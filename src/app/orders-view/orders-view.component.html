@@ -1,0 +1,59 @@
+<div class="modal fade bd-example-modal-xl" id="modalOrders" tabindex="-1" aria-labelledby="modalOrdersLabel"
+  aria-hidden="true">
+  <div class="modal-dialog  modal-xl">
+    <div class="modal-content">
+      <div class="modal-header header-modal">
+        <h5 class="modal-title text" id="modalOrdersLabel">{{title}} - Orders</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Required Date</th>
+              <th scope="col">Shipped Date</th>
+              <th scope="col">ShipName</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr  *ngFor="let order of listOrder;">
+              <td>{{order.orderId}}</td>
+              <td>{{order.requiredDate}}</td>
+              <td>{{order.shippedDate}}</td>
+              <td>{{order.shipName}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="pagination-container">
+          <div class="row d-flex justify-content-end">
+            <div class="col-2">
+              Rows per page :
+              <select [(ngModel)]="size" class="select-page" (ngModelChange)="onChange($event)">
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+            </select>
+            </div>
+
+            <div class="col-2">
+              {{textPage}}
+            </div>
+            <div class="col-1">
+              <a class="icon-darkgrey" (click)="previous()" aria-label="Previous">
+                <i class="fas fa-chevron-left"></i>
+              </a>
+              <a class="icon-darkgrey icon-next" (click)="next()" aria-label="Next">
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary close-modal" data-bs-dismiss="modal"><strong>Cerrar</strong>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

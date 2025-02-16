@@ -1,0 +1,61 @@
+
+<div class="container-table">
+    <div class="row">
+        <div class="col-8"><h4>Customer</h4></div>
+        <div class="col-4">
+            <input [(ngModel)]="search"  (ngModelChange)="onChange($event)" type="text" class="input-search"><i class="fas fa-search"></i>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Customer Name</th>
+                <th scope="col">Last Order Date</th>
+                <th scope="col">Next Predicted Order</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prediction of listPredictions;">
+                <td>{{prediction.customerName}}</td>
+                <td>{{prediction.lastOrderDate}}</td>
+                <td>{{prediction.nextPredictedOrder}}</td>
+                <td class="text-red"><a (click)="openPopupOrders(prediction)">VIEW ORDERS</a></td>
+                <td class="text-green"><a (click)="openPopupNewOrder(prediction)">NEW ORDER</a></td>
+              </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        <div class="row d-flex justify-content-end">
+            <div class="col-2">
+                Rows per page :
+                <select [(ngModel)]="size" class="select-page" (ngModelChange)="onChange($event)">
+                    <option value="10" selected>10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+
+            <div class="col-1">
+                {{textPage}}
+            </div>
+            <div class="col-1">
+                <a class="icon-darkgrey" aria-label="Previous" (click)="previous()">
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <a class="icon-darkgrey icon-next" aria-label="Next" (click)="next()">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <app-orders-view></app-orders-view>
+    <app-new-order></app-new-order>
+</div>
+

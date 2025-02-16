@@ -1,0 +1,131 @@
+<div class="modal fade bd-example-modal-xl" id="modalNewOrder" tabindex="-1" aria-labelledby="modalOrdersLabel"
+    aria-hidden="true">
+    <div class="modal-dialog  modal-lg">
+        <div class="modal-content">
+            <div class="modal-header header-modal">
+                <h5 class="modal-title text" id="modalOrdersLabel">{{title}} - New Order</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <h5>Order</h5>
+                    <div class="form-group group">
+                        <div class="row">
+                            <div class="col-6">
+                                <select [(ngModel)]="newOrder.empId" class="form-select" aria-label="Employee"
+                                    name="Employee">
+                                    <option disabled selected value> Employee* </option>
+                                    <option *ngFor="let employee of employees;" value="{{employee.empId}}">
+                                        {{employee.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-6">
+                                <select [(ngModel)]="newOrder.shipperId" class="form-select" aria-label="Shipper"
+                                    name="Shipper">
+                                    <option disabled selected value> Shipper* </option>
+                                    <option *ngFor="let shipper of shippers;" value="{{shipper.shipperId}}">
+                                        {{shipper.companyName}}</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <input [(ngModel)]="newOrder.shipName" type="text" class="form-control" id="ShipeName"
+                                    name="ShipeName" placeholder="Ship Name*">
+                            </div>
+                            <div class="col-4">
+                                <input [(ngModel)]="newOrder.shipAddress" type="text" class="form-control"
+                                    id="ShipAddess" name="ShipAddess" placeholder="Ship Address*">
+                            </div>
+                            <div class="col-4">
+                                <input [(ngModel)]="newOrder.shipCity" type="text" class="form-control" id="ShipCity"
+                                    name="ShipCity" placeholder="Ship City*">
+                            </div>
+                            <div class="col-4">
+                                <input [(ngModel)]="newOrder.shipCountry" type="text" class="form-control"
+                                    id="ShipCountry" name="ShipCountry" placeholder="Ship Country*">
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <button class="btn btn-outline-secondary not-border" (click)="d.toggle()"
+                                            type="button"><i class="fa fa-calendar"></i></button>
+                                    </div>
+                                    <div class="col-9">
+                                        <input class="form-control" placeholder="Order Date*"
+                                            (ngModelChange)="onDateChangeOrderDate($event)"
+                                            [(ngModel)]="orderDate" name="OrderDate" ngbDatepicker
+                                            #d="ngbDatepicker" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <button class="btn btn-outline-secondary not-border" (click)="d1.toggle()"
+                                            type="button"><i class="fa fa-calendar"></i></button>
+                                    </div>
+                                    <div class="col-9">
+                                        <input class="form-control" (ngModelChange)="onDateChangeRequiredDate($event)"
+                                            placeholder="Required Date*" [(ngModel)]="requiredDate"
+                                            name="RequiredDate" ngbDatepicker #d1="ngbDatepicker" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <button class="btn btn-outline-secondary not-border" (click)="d2.toggle()"
+                                            type="button"><i class="fa fa-calendar"></i></button>
+                                    </div>
+                                    <div class="col-9">
+                                        <input class="form-control" placeholder="Shipped Date*"
+                                            (ngModelChange)="onDateChangeShippedDate($event)"
+                                            [(ngModel)]="shippedDate" name="ShippedDate" ngbDatepicker
+                                            #d2="ngbDatepicker" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <input [(ngModel)]="newOrder.freight" type="number" class="form-control" id="Frelght"
+                                    name="Frelght" placeholder="Frelght*">
+                            </div>
+                        </div>
+
+
+
+                    </div>
+                    <h5>Order Details</h5>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-12">
+                                <select [(ngModel)]="newOrder.poductId" class="form-select" aria-label="Product"
+                                    name="Product">
+                                    <option disabled selected value> Product* </option>
+                                    <option *ngFor="let product of products;" value="{{product.productId}}">
+                                        {{product.productName}}</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <input [(ngModel)]="newOrder.unitPrice" type="number" class="form-control"
+                                    id="UnitPrice" name="UnitPrice" placeholder="Unit Price*">
+                            </div>
+                            <div class="col-4">
+                                <input [(ngModel)]="newOrder.qty" type="number" class="form-control" id="Quantity"
+                                    name="Quantity" placeholder="Quantity*">
+                            </div>
+                            <div class="col-4">
+                                <input [(ngModel)]="newOrder.discount" type="number" class="form-control" id="Discount"
+                                    name="Discount" placeholder="Discount*">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn button" data-bs-dismiss="modal"><strong>Close</strong>
+                </button>
+                <button type="button" class="btn button" (click)="save()"><strong>Save</strong>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

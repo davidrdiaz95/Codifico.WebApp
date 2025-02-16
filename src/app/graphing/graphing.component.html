@@ -1,0 +1,7 @@
+<div>
+    <label><strong>Source Data:</strong></label>
+    <input #dataInput type="text" [value]="data.join(',')" />
+    <button (click)="updateData(dataInput.value)">Update Data</button>
+  </div>
+  
+  <div class="chart-container"></div>
